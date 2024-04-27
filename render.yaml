@@ -1,0 +1,20 @@
+services:
+- type: web
+  name: docker_durpal
+  runtime: docker
+  repo: https://github.com/Niktopol/docker_durpal
+  plan: free
+  region: oregon
+  dockerContext: .
+  dockerfilePath: ./Dockerfile
+
+databases:
+- name: pgdb
+  databaseName: durpal
+  user: durpal_user
+  plan: free
+  region: oregon
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
